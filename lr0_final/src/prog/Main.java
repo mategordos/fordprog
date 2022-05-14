@@ -29,17 +29,17 @@ public class Main {
         ReductionRuleset reductionRuleset = new ReductionRuleset();
 
         while (!state.isInAcceptState()) {
-            String action = table.getNThRow(state.top().stateOrdinal()).getAction();
+            String action = table.getNThRow(state.top().stateOrdinal()).getAction();//action beolvasása
             actions.add(action);
             if (action.charAt(0) == 's') {
                 int newState = table.getNThRow(state.top().stateOrdinal()).getGotoOf(state.front());
-                char newSymbol = state.front();
-                state.popFromWord();
-                state.pushToStack(new Rule(newSymbol, newState));
+                char newSymbol = state.front();//olvasott karaktert változóba tároljuk
+                state.popFromWord();//kivesszük ezt a szó elejéről
+                state.pushToStack(new Rule(newSymbol, newState));//szabállyal helyettesítjük
             }
 
-            if (action.charAt(0) == 'r') {
-                ReductionRule reductionRule = reductionRuleset.getRule(action);
+            if (action.charAt(0) == 'r') { //megnézzük hogy redukció-e
+                ReductionRule reductionRule = reductionRuleset.getRule(action);//megnézzük, hogy konkrétan melyik
 
                 for(int i = 0; i < reductionRule.lengthOfRule(); ++i) {
                     state.popFromStack();
@@ -96,7 +96,7 @@ class TableRow {
     }
 }
 
-//Egy általános leírása a szabály felépítésének, mely a táblázatot használja alapul
+//Egy általános leírása a szabály felépítésének, mely a táblázatot használja alapul, betű és szám
 class Rule {
     private Character inputCharacter;
     private Integer newStateOrdinal;
@@ -148,7 +148,7 @@ class ReductionRule {
 }
 
 //Állapotokat leíró osztály, segédfüggvényekkel, amelyek a jelenlegi állapotot, illetve a soron
-//következő karaktert segítik megvizsgáln
+//következő karaktert segítik megvizsgálni
 class State {
     private final Stack<Rule> first;
     private final LinkedList<Character> second;
@@ -168,11 +168,11 @@ class State {
 
     public Rule top() {
         return first.peek();
-    }
+    } //stack tetején lévő szabályt vizsgáló metódus
 
     public char front() {
         return second.getFirst();
-    }
+    }//következő karakter
 
     public boolean isInAcceptState() {
         return top().stateOrdinal() == 1 && front() == '#';
