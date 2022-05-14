@@ -14,6 +14,8 @@ public class Main {
 
         String input = reader.readLine();
 
+
+        //Ciklus, ami felbontja a stringet karakterekké
         for(var c: input.toCharArray()) {
             if(!(c == 'a' || c == 'b' || c == 'c' || c == 'd')) {
                 System.out.println("Az input csak ezeket tartalmazhatja: a b c d");
@@ -67,6 +69,8 @@ public class Main {
     }
 }
 
+
+//Táblázat sorait reprezentáló osztály
 class TableRow {
     private final String action;
     private Map<Character, Integer> gotoTable;
@@ -92,6 +96,7 @@ class TableRow {
     }
 }
 
+//Egy általános leírása a szabály felépítésének, mely a táblázatot használja alapul
 class Rule {
     private Character inputCharacter;
     private Integer newStateOrdinal;
@@ -106,6 +111,7 @@ class Rule {
     }
 }
 
+//Ebben az osztályban lehet megadni a redukciós szabályokat
 class ReductionRuleset {
     private Map<String, ReductionRule> rules;
 
@@ -121,6 +127,8 @@ class ReductionRuleset {
     }
 }
 
+
+//A redukciós szabályok általános leírása
 class ReductionRule {
     private Character substituteeSymbol;
     private String subsitutedSymbols;
@@ -139,6 +147,8 @@ class ReductionRule {
     }
 }
 
+//Állapotokat leíró osztály, segédfüggvényekkel, amelyek a jelenlegi állapotot, illetve a soron
+//következő karaktert segítik megvizsgáln
 class State {
     private final Stack<Rule> first;
     private final LinkedList<Character> second;
@@ -184,7 +194,7 @@ class State {
         first.pop();
     }
 }
-
+//Táblázatnak egy HashMap segítségével értékeket adunk
 class Table {
     public Table() {
         this.table = new HashMap<>();

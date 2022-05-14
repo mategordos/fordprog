@@ -67,6 +67,7 @@ public class Main {
     }
 }
 
+//Állapotok leírása, segédfüggvények melyek segítik
 class State {
     private final Stack<Rule> first;
     private final LinkedList<Character> second;
@@ -123,6 +124,7 @@ class ReductionRule {
     }
 }
 
+//Táblázatnak értékadás ("e" string reprezentálja az üres mezőket)
 class Table {
     public Table() {
         this.table = new HashMap<>();
@@ -186,6 +188,7 @@ class Table {
     private Map<Integer, TableRow> table;
 }
 
+//Táblázat struktúrája, a sorok megadása
 class TableRow {
     private Map<Character, String> gotoTable;
 
@@ -204,6 +207,7 @@ class TableRow {
     }
 }
 
+//A redukciós szabályok megadása
 class ReductionRuleset {
     private Map<String, ReductionRule> rules;
 
@@ -219,6 +223,7 @@ class ReductionRuleset {
     }
 }
 
+//Általános leírás, mint szabály osztályban
 class Rule {
     private Character inputCharacter;
     private Integer newStateOrdinal;

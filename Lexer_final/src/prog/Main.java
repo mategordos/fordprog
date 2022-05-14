@@ -18,6 +18,8 @@ import java.util.List;
         }
     }
 
+    //Ebben az osztályban egy Buildert használva létrehozzuk a táblát egy Map formájában, a Character.{placeholder} értékek
+    // a beolvasott karakterek, a state.ValueOf pedig a hozzájuk rendelt érték.
     class Util {
         public static Table getTable() {
             var tableBuilder = new Table.Builder();
@@ -492,6 +494,9 @@ import java.util.List;
         }
     }
 
+
+    //Ebben az osztályban azt vizsgáljuk meg, hogy az inputban lévő karaktersorozatok alkotnak-e lexémát
+    //és ha igen, akkor a megfelelő lexémát kigyűjtjük a stringből
     class TokenFactory {
         private PushbackInputStream stream;
 
@@ -577,6 +582,7 @@ import java.util.List;
         }
     }
 
+    //Enum segítségével létrehozzuk a lexémákat reprezentáló tokeneket, változónév("lexéma") formájában
     enum Token {
         IDENTIFIER("azonosító"),
         CONSTANT("konstans"),
@@ -600,7 +606,8 @@ import java.util.List;
         }
     }
 
-
+    //Ebben az osztályban a tábla struktúráját készítjük el, illetve segédfüggvényeket készítünk el hozzá,
+    //amelyek könnyítik a használatát
     class Table {
         private EnumMap<State, StateInformation> stateInformationMapping;
 
@@ -712,7 +719,7 @@ import java.util.List;
         }
     }
 
-
+    //Enum, ami tartalmazza az összes állapotot
     enum State {
         START,
         IDENTIFIER,
