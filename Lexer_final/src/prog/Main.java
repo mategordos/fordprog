@@ -1,3 +1,5 @@
+package prog;
+
 import java.io.IOException;
 import java.io.PushbackInputStream;
 import java.util.ArrayList;
@@ -7,6 +9,7 @@ import java.util.List;
 
     public class Main {
         public static void main( String[] args ) throws IOException {
+            System.out.println("Adj meg egy stringet, amiből lexémákat olvashatunk ($ jellel zárva)");
             TokenFactory factory = new TokenFactory(new PushbackInputStream(System.in));
             for(var token: factory.getTokens()) {
                 System.out.print(token.toString());
