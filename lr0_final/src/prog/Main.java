@@ -194,7 +194,7 @@ class State {
         first.pop();
     }
 }
-//Táblázatnak egy HashMap segítségével értékeket adunk
+//Táblázatnak egy HashMap segítségével értékeket adunk (-1 üres)
 class Table {
     public Table() {
         this.table = new HashMap<>();

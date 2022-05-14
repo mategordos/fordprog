@@ -87,11 +87,11 @@ class State {
 
     public Rule top() {
         return first.peek();
-    }
+    } //stack tetején lévő szabályt vizsgáló metódus
 
     public char front() {
         return second.getFirst();
-    }
+    } //következő karakter
 
     public void popFromWord() {
         this.second.remove(0);
